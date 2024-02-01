@@ -32,6 +32,16 @@ class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
+
+            ScreenRegistry {
+                register<SharedScreen.ItemList> {
+                    ItemScreen()
+                }
+                register<SharedScreen.ItemDetails> { provider ->
+                    ItemDetailsScreen(id = provider.id)
+                }
+            }
+
             TabNavigator(HomeTab) {
 
                 Scaffold(
